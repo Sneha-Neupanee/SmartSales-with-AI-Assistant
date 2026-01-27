@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.app.database import init_db
-from backend.app.routes import dashboard, product, sales, expenses, insights, ml, alerts
-from backend.app import models
+from app.database import init_db
+from app.routes import dashboard, product, sales, expenses, insights, ml, alerts
+from app import models
 
 app = FastAPI(title="Smart Sales Assistant API", version="1.0.0")
 
