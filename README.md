@@ -65,6 +65,9 @@ smart-sales-assistant/
 │
 └── README.md
 
+
+---
+
 ## Setup Instructions
 
 Backend Setup:
