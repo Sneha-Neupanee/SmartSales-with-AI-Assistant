@@ -43,31 +43,27 @@ AI / Machine Learning:
 smart-sales-assistant/
 │
 ├── backend/
-│ ├── app/
-│ │ ├── main.py
-│ │ ├── models.py
-│ │ ├── schemas.py
-│ │ ├── crud.py
-│ │ ├── routes/
-│ │ └── database.py
-│ │
-│ ├── requirements.txt
-│ └── .env
+│   ├── app/
+│   │   ├── main.py
+│   │   ├── models.py
+│   │   ├── schemas.py
+│   │   ├── crud.py
+│   │   ├── routes/
+│   │   └── database.py
+│   │
+│   ├── requirements.txt
+│   └── .env
 │
 ├── frontend/
-│ ├── src/
-│ │ ├── pages/
-│ │ ├── components/
-│ │ ├── services/
-│ │ └── App.jsx
-│ │
-│ └── package.json
+│   ├── src/
+│   │   ├── pages/
+│   │   ├── components/
+│   │   ├── services/
+│   │   └── App.jsx
+│   │
+│   └── package.json
 │
 └── README.md
-
-
----
-
 ## Setup Instructions
 
 Backend Setup:
