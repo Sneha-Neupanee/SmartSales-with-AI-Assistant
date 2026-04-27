@@ -38,8 +38,11 @@ AI / Machine Learning:
 - Scikit-learn / TensorFlow
 - OpenAI API
 
+
+
 ## Project Structure
 
+```text
 smart-sales-assistant/
 │
 ├── backend/
@@ -64,6 +67,8 @@ smart-sales-assistant/
 │   └── package.json
 │
 └── README.md
+```
+
 ## Setup Instructions
 
 Backend Setup:
