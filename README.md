@@ -2,73 +2,95 @@
 
 SmartSales Assistant is a full-stack sales analytics and intelligence platform designed to help businesses track performance, analyze data, and make informed decisions using real-time insights and AI-assisted analysis.
 
-It combines a React.js frontend with a Python FastAPI backend, along with machine learning models and AI integration for predictive analytics and automated explanations.
+It combines a React.js frontend with a Python FastAPI backend, along with machine learning models and AI integration for predictive analytics and automated insights.
 
-# Features
-Product, Sales, and Expense management (full CRUD system)
-Sales dashboard with key metrics (total sales, profit, loss)
-Date-range filtering for analysis
-CSV export functionality
-Interactive charts and data visualization
-Rule-based business insights
-Sales prediction using machine learning
-AI-generated explanations using OpenAI
-Natural language query support for data insights
-Alert system for business monitoring
-Responsive and user-friendly interface
-Tech Stack
-Frontend
-React.js
-TailwindCSS
-Recharts
-Axios
-Backend
-Python
-FastAPI
-SQLAlchemy
-SQLite
-Pydantic
-Uvicorn
-AI / Machine Learning
-Scikit-learn / TensorFlow
-OpenAI API
-# Project Structure
+---
+
+## Features
+
+- Product, Sales, and Expense management (full CRUD system)
+- Sales dashboard with key business metrics (total sales, profit, loss)
+- Date-range filtering for analysis
+- CSV export functionality
+- Interactive charts and data visualization
+- Rule-based business insights
+- Sales prediction using machine learning
+- AI-generated explanations using OpenAI
+- Natural language query support for data insights
+- Alert system for business monitoring
+- Responsive and clean user interface
+
+---
+
+## Tech Stack
+
+### Frontend
+- React.js
+- TailwindCSS
+- Recharts
+- Axios
+
+### Backend
+- Python
+- FastAPI
+- SQLAlchemy
+- SQLite
+- Pydantic
+- Uvicorn
+
+### AI / Machine Learning
+- Scikit-learn / TensorFlow
+- OpenAI API
+
+---
+
+## Project Structure
 smart-sales-assistant/
 │
 ├── backend/
-│   ├── app/
-│   │   ├── main.py
-│   │   ├── models.py
-│   │   ├── schemas.py
-│   │   ├── crud.py
-│   │   ├── routes/
-│   │   └── database.py
-│   ├── requirements.txt
-│   └── .env
+│ ├── app/
+│ │ ├── main.py
+│ │ ├── models.py
+│ │ ├── schemas.py
+│ │ ├── crud.py
+│ │ ├── routes/
+│ │ └── database.py
+│ │
+│ ├── requirements.txt
+│ └── .env
 │
 ├── frontend/
-│   ├── src/
-│   │   ├── pages/
-│   │   ├── components/
-│   │   ├── services/
-│   │   └── App.jsx
-│   └── package.json
+│ ├── src/
+│ │ ├── pages/
+│ │ ├── components/
+│ │ ├── services/
+│ │ └── App.jsx
+│ │
+│ └── package.json
 │
 └── README.md
-# Setup Instructions
-Backend Setup
+## Setup Instructions
+
+### Backend Setup
+
+```bash
 cd backend
 python -m venv venv
-# Activate:
-# Windows: venv\Scripts\activate
+
+# Activate virtual environment
+# Windows:
+venv\Scripts\activate
+# Mac/Linux:
+source venv/bin/activate
+
 pip install -r requirements.txt
 uvicorn app.main:app --reload
 
-Backend runs at:
+# Backend runs at:
 
 http://localhost:8000
 
-Test endpoint:
+Test endpoint
 
 GET /ping
 Frontend Setup
@@ -76,12 +98,12 @@ cd frontend
 npm install
 npm run dev
 
-Frontend runs at:
+# Frontend runs at:
 
 http://localhost:5173
 Environment Variables
 
-Create a .env file inside the backend/ directory:
+Create a .env file inside the backend/ folder:
 
 OPENAI_API_KEY=your_openai_api_key
 DATABASE_URL=sqlite:///./smartsales.db
