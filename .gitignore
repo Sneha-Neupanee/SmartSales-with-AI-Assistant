@@ -1,4 +1,70 @@
-venv/
-__pycache__/
+# Environment and secrets
 .env
-*.pyc
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+share/python-wheels/
+*.manifest
+*.spec
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+
+# Virtual environments (repo root or backend)
+venv/
+.venv/
+backend/venv/
+backend/.venv/
+
+# Celery
+celerybeat-schedule
+celerybeat-schedule.*
+celerybeat.pid
+
+# Local databases (SQLite); recreate via app startup / migrations
+*.db
+*.sqlite
+*.sqlite3
+
+# ML / model artifacts (regenerate with /ml/train)
+*.keras
+*.h5
+*.pkl
+*.joblib
+*.pt
+*.onnx
+
+# Node (if tooling ever runs from repo root)
+node_modules/
+
+# Build / dist
+dist/
+build/
+*.log
+
+# OS and editors
+.DS_Store
+Thumbs.db
+.idea/
+*.swp
+*.swo
+*~
+
+# Cursor / local IDE (optional local state)
+.cursor/

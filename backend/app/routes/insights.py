@@ -1,16 +1,13 @@
+import re
+
 from fastapi import APIRouter, Depends, Query, HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy import func
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from pydantic import BaseModel
-import os
-from dotenv import load_dotenv
-from openai import OpenAI
 
 from .. import models, database
-
-# Load environment variables
-load_dotenv()
+from ..tasks import generate_ai_explanation_task
 
 router = APIRouter(
     prefix="/insights",
@@ -174,70 +171,18 @@ def explain_insights(request: ExplainRequest):
     """
     Generate AI-powered business insights using OpenAI GPT
     """
-    # Check if API key exists
-    api_key = os.getenv("OPENAI_API_KEY")
-    if not api_key:
-        raise HTTPException(
-            status_code=500,
-            detail="OpenAI API key not configured. Please add OPENAI_API_KEY to .env file"
-        )
-    
     try:
-        # Initialize OpenAI client
-        client = OpenAI(api_key=api_key)
-        
-        # Prepare the prompt with business data
-        prompt = f"""
-You are a business analyst AI assistant. Analyze the following business statistics and provide actionable insights.
-
-Business Statistics:
-{request.stats}
-
-Please provide:
-1. A brief summary of the overall business performance
-2. Key strengths and opportunities
-3. Areas of concern or risk
-4. 3-5 specific, actionable recommendations to improve profitability
-
-Keep your response concise, professional, and focused on actionable advice. Format your response with clear sections.
-"""
-        
-        # Call OpenAI API
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",  # Using cost-effective model
-            messages=[
-                {
-                    "role": "system",
-                    "content": "You are an expert business analyst who provides clear, actionable insights based on sales data."
-                },
-                {
-                    "role": "user",
-                    "content": prompt
-                }
-            ],
-            temperature=0.7,
-            max_tokens=800
-        )
-        
-        # Extract the explanation
-        explanation = response.choices[0].message.content
-        
+        task = generate_ai_explanation_task.delay(stats=request.stats)
         return {
-            "status": "success",
-            "explanation": explanation,
-            "model_used": "gpt-4o-mini",
-            "tokens_used": response.usage.total_tokens
+            "status": "queued",
+            "task_id": task.id,
         }
-        
+
     except Exception as e:
         raise HTTPException(
             status_code=500,
-            detail=f"Failed to generate insights: {str(e)}"
+            detail=f"Failed to queue explanation task: {str(e)}"
         )
-    # Add this to backend/app/routes/insights.py
-
-from datetime import datetime, timedelta
-import re
 
 # ============ 21.1 & 21.2: Keyword Mapping & Query Endpoint ============
 

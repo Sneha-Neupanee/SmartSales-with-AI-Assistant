@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from .. import database
-from ..ml_utils import prepare_ml_data, train_model, predict_sales
+from ..ml_utils import prepare_ml_data, train_model
+from ..tasks import generate_ml_prediction_task
 
 router = APIRouter(
     prefix="/ml",
@@ -28,7 +29,10 @@ def train(epochs: int = 50, batch_size: int = 4, db: Session = Depends(get_db)):
     return result
 
 @router.get("/predict")
-def predict(product_id: int, days: int = 7, db: Session = Depends(get_db)):
+def predict(product_id: int, days: int = 7):
     """Predict future sales for a product"""
-    result = predict_sales(db, product_id=product_id, days=days)
-    return result
+    task = generate_ml_prediction_task.delay(product_id=product_id, days=days)
+    return {
+        "status": "queued",
+        "task_id": task.id,
+    }

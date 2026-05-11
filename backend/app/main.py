@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import init_db
-from app.routes import dashboard, product, sales, expenses, insights, ml, alerts
+from app.routes import dashboard, product, sales, expenses, insights, ml, alerts, tasks
 from app import models
 
 app = FastAPI(title="Smart Sales Assistant API", version="1.0.0")
@@ -27,6 +27,7 @@ app.include_router(dashboard.router)
 app.include_router(insights.router)
 app.include_router(ml.router)
 app.include_router(alerts.router)  # Added alerts router
+app.include_router(tasks.router)
 
 @app.get("/ping")
 def ping():
