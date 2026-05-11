@@ -4,8 +4,8 @@ from sqlalchemy import func
 from datetime import date
 from typing import Optional
 
-from backend.app.database import get_db
-from backend.app import models
+from app.database import get_db
+from app import models
 router = APIRouter(
     prefix="/dashboard",
     tags=["Dashboard"]
