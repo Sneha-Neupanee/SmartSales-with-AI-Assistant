@@ -1,4 +1,4 @@
-# SmartSales Assistant
+# SmartSales Assistant AI
 
 SmartSales Assistant is a full-stack sales analytics and intelligence platform. It helps you track performance, analyze data, and make decisions using dashboards, rule-based insights, machine learning forecasts, and optional AI-generated commentary via the OpenAI API.
 
